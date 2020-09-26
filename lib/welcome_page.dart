@@ -36,6 +36,7 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
             ),
+            Spacer(),
             new RaisedButton(
               onPressed: () {
                 Navigator.push(

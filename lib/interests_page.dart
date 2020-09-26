@@ -14,8 +14,8 @@ class InterestsPage extends StatefulWidget {
 class _InterestsPageState extends State<InterestsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return SafeArea(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,17 +34,16 @@ class _InterestsPageState extends State<InterestsPage> {
                 ),
               ),
             ),
+            Spacer(),
             new RaisedButton(
-              onPressed: () {},
-              child: Padding (
-                padding: EdgeInsets.all(20),
-                child:Text('Next',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white
-                  ))),
-              color: Colors.green 
-            ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text('Next2',
+                        style: TextStyle(fontSize: 20, color: Colors.white))),
+                color: Colors.green),
           ],
         ),
       ),
