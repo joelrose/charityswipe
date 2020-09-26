@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/avd.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'interests_page.dart';
+class InterestsPage extends StatefulWidget {
+  InterestsPage({Key key}) : super(key: key);
 
-class WelcomePage extends StatelessWidget {
+  @override
+  _InterestsPageState createState() => _InterestsPageState();
+}
+
+class _InterestsPageState extends State<InterestsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,15 +22,7 @@ class WelcomePage extends StatelessWidget {
           children: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(20.0),
-              child: SvgPicture.asset('assets/images/welcome.svg'),
-            ),
-            new Text(
-              "Welcome to CharitySwipe",
-              style: new TextStyle(
-                fontSize: 40.0,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
+              child: SvgPicture.asset('assets/images/window.svg'),
             ),
             new Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
@@ -37,17 +35,15 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             new RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InterestsPage()),
-                );
-              },
-              child: Text('Get Started',
+              onPressed: () {},
+              child: Padding (
+                padding: EdgeInsets.all(20),
+                child:Text('Next',
                   style: TextStyle(
                     fontSize: 20,
-                  )),
-              color: Colors.greenAccent,
+                    color: Colors.white
+                  ))),
+              color: Colors.green 
             ),
           ],
         ),
