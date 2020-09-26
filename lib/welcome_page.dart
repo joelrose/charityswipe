@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/onboarding_wrapper.dart';
+import 'package:src/page_wrapper.dart';
 
 import 'interests_page.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return OnboardingWrapper(
+    return PageWrapper(
+        child: OnboardingWrapper(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,6 +51,6 @@ class WelcomePage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

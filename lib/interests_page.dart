@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/avd.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/onboarding_wrapper.dart';
+import 'package:src/page_wrapper.dart';
 
 class InterestsPage extends StatefulWidget {
   InterestsPage({Key key}) : super(key: key);
@@ -15,8 +16,9 @@ class InterestsPage extends StatefulWidget {
 class _InterestsPageState extends State<InterestsPage> {
   @override
   Widget build(BuildContext context) {
-    return OnboardingWrapper(
-        body: Center(
+    return PageWrapper(
+        child: OnboardingWrapper(
+            body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,6 +49,6 @@ class _InterestsPageState extends State<InterestsPage> {
               color: Colors.green),
         ],
       ),
-    ));
+    )));
   }
 }
