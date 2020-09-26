@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/charity_card.dart';
 import 'package:src/components/button.dart';
+import 'package:src/helpers/px_spacer.dart';
 import 'package:src/onboarding_wrapper.dart';
 import 'package:src/page_wrapper.dart';
 
@@ -19,25 +20,23 @@ class WelcomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Padding(
+            Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
               child: SvgPicture.asset('assets/images/welcome.svg'),
             ),
-            new Text(
+            Text(
               "Welcome to CharitySwipe",
               style: Theme.of(context).textTheme.headline1,
               textAlign: TextAlign.center,
             ),
-            new Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-              child: new Text(
-                "Donating money to charity can be challenging. With CharitySwipe, you can easily and securely discover, choose and donate money.",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
+            PxSpacer(20),
+            Text(
+              "Donating money to charity can be challenging. With CharitySwipe, you can easily and securely discover, choose and donate money.",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
             Spacer(),
-            new CharitySwipeButton(
+            CharitySwipeButton(
               onPressed: () {
                 Navigator.push(
                   context,
