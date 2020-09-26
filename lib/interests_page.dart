@@ -40,9 +40,9 @@ class _InterestsPageState extends State<InterestsPage> {
                   Navigator.pop(context);
                 },
                 child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Text('Next2',
-                        style: TextStyle(fontSize: 20, color: Colors.white))),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Text('Next',
+                        style: Theme.of(context).textTheme.button)),
                 color: Colors.green),
           ],
         ),
