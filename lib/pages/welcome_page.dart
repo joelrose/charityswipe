@@ -20,7 +20,7 @@ class WelcomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             new Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
               child: SvgPicture.asset('assets/images/welcome.svg'),
             ),
             new Text(

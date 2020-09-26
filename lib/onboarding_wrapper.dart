@@ -8,7 +8,7 @@ class OnboardingWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 50.0),
+        padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 50.0),
         child: this.body);
   }
 }

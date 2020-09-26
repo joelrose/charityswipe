@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:src/interests_page.dart';
-import 'welcome_page.dart';
+import 'package:src/pages/interests_page.dart';
+import 'package:src/style.dart';
+import 'package:src/theme.dart';
+import 'pages/welcome_page.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,27 +18,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Color(0xff75D62A),
-        buttonTheme: ButtonThemeData(
-          buttonColor: Color(0xff75D62A),
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-        ),
-        textTheme: TextTheme(
-          headline1: GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)),
-          bodyText1: GoogleFonts.inter(
-              textStyle:
-                  TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
-          button: GoogleFonts.inter(
-              textStyle: TextStyle(fontSize: 25, color: Colors.white)),
-        ),
-      ),
-      
+      theme: theme,
       home: startPage,
     );
   }
