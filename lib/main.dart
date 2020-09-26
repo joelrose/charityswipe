@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:src/interests_page.dart';
 import 'welcome_page.dart';
 
+import 'package:google_fonts/google_fonts.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -22,12 +24,19 @@ class MyApp extends StatelessWidget {
           highlightColor: Colors.transparent,
         ),
         textTheme: TextTheme(
-          headline1: TextStyle(
-              fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black),
-          bodyText1: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
-          button: TextStyle(fontSize: 25, color: Colors.white),
+          headline1: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black)),
+          bodyText1: GoogleFonts.inter(
+              textStyle:
+                  TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          button: GoogleFonts.inter(
+              textStyle: TextStyle(fontSize: 25, color: Colors.white)),
         ),
       ),
+      
       home: startPage,
     );
   }
