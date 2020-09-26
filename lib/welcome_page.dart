@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:src/charity_card.dart';
+import 'package:src/components/button.dart';
 import 'package:src/onboarding_wrapper.dart';
 import 'package:src/page_wrapper.dart';
 
@@ -35,19 +37,15 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             Spacer(),
-            new RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => InterestsPage()),
-                  );
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Text('Get Started',
-                      style: Theme.of(context).textTheme.button),
-                ),
-                color: Colors.green),
+            new CharitySwipeButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InterestsPage()),
+                );
+              },
+              buttonText: "Get Started",
+            )
           ],
         ),
       ),
