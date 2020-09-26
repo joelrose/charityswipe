@@ -35,16 +35,12 @@ class _InterestsPageState extends State<InterestsPage> {
               ),
             ),
             new RaisedButton(
-              onPressed: () {},
-              child: Padding (
-                padding: EdgeInsets.all(20),
-                child:Text('Next',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white
-                  ))),
-              color: Colors.green 
-            ),
+                onPressed: () {},
+                child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Text('Next',
+                        style: Theme.of(context).textTheme.button)),
+                color: Colors.green),
           ],
         ),
       ),
