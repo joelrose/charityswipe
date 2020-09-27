@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+ 
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/components/button.dart';
@@ -8,85 +8,31 @@ import 'package:src/donation_dashboard_item.dart';
 import 'package:src/models/Charity.dart';
 import 'package:src/page_wrapper.dart';
 import 'package:src/style.dart';
-
+ 
 class DonationOverviewPage extends StatefulWidget {
-  DonationOverviewPage({Key key}) : super(key: key);
-
+  DonationOverviewPage({Key key, this.charities}) : super(key: key);
+ 
+  List<Charity> charities = [];
+ 
   @override
   _DonationOverviewPageState createState() => _DonationOverviewPageState();
 }
-
+ 
 class _DonationOverviewPageState extends State<DonationOverviewPage> {
   double donationAmount = 5.0;
-
+ 
   final ScrollController _scrollController = ScrollController();
-
-  _DonationOverviewPageState() {
-    this.charities = this.charities.map((e) {
-      e.donationValue = donationAmount / this.charities.length;
+ 
+  @override
+  void initState() {
+    super.initState();
+ 
+    widget.charities = widget.charities.map((e) {
+      e.donationValue = donationAmount / widget.charities.length;
       return e;
     }).toList();
   }
-
-  List<Charity> charities = [
-    Charity(
-        id: 1,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    Charity(
-        id: 2,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    Charity(
-        id: 2,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    Charity(
-        id: 3,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    Charity(
-        id: 4,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    Charity(
-        id: 5,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    Charity(
-        id: 6,
-        name: "Save the tigers",
-        description:
-            "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-        label: "WWF",
-        imageUrl:
-            "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-  ];
-
+ 
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
@@ -129,12 +75,12 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                                 if (newDonationAmount == null) {
                                   newDonationAmount = 0;
                                 }
-
+ 
                                 setState(() {
                                   donationAmount = newDonationAmount;
-                                  charities = charities.map((e) {
+                                  widget.charities = widget.charities.map((e) {
                                     e.donationValue = newDonationAmount /
-                                        (charities.length + .0);
+                                        (widget.charities.length + .0);
                                     return e;
                                   }).toList();
                                 });
@@ -166,71 +112,71 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 140),
                     child: ListView.builder(
-                        itemCount: charities.length,
+                        itemCount: widget.charities.length,
                         controller: _scrollController,
                         itemBuilder: (BuildContext ctxt, int index) {
                           return DonationDashboardItem(
                             totalDonationValue: this.donationAmount,
                             onChange: (delta) {
                               var donationDelta =
-                                  (delta / (this.charities.length - 1));
-
+                                  (delta / (widget.charities.length - 1));
+ 
                               var i = 0;
                               while ((this.totalSum() - this.donationAmount)
                                       .abs() >
                                   0.2) {
                                 if (i != index) {
                                   var newValue =
-                                      this.charities[i].donationValue -
+                                      widget.charities[i].donationValue -
                                           donationDelta;
-
+ 
                                   if (newValue >= 0 &&
                                       newValue <= donationAmount) {
                                     setState(() {
-                                      this.charities[i].donationValue =
+                                      widget.charities[i].donationValue =
                                           newValue;
                                     });
                                     donationDelta =
-                                        (delta / (this.charities.length - 1));
+                                        (delta / (widget.charities.length - 1));
                                   } else if (newValue < 0) {
                                     setState(() {
-                                      this.charities[i].donationValue = 0;
+                                      widget.charities[i].donationValue = 0;
                                     });
                                     donationDelta += (newValue.abs() /
-                                        (this.charities.length - 1));
+                                        (widget.charities.length - 1));
                                   } else {
                                     setState(() {
-                                      this.charities[i].donationValue =
+                                      widget.charities[i].donationValue =
                                           donationAmount;
                                     });
                                     donationDelta -=
                                         ((newValue - this.donationAmount)
                                                 .abs() /
-                                            (this.charities.length - 1));
+                                            (widget.charities.length - 1));
                                   }
                                 }
-
-                                if (!this.charities.any((element) =>
+ 
+                                if (!widget.charities.any((element) =>
                                     element.donationValue + donationDelta <
                                     donationAmount)) {
                                   break;
                                 }
-
-                                if (!this.charities.any((element) =>
+ 
+                                if (!widget.charities.any((element) =>
                                     element.donationValue + donationDelta >
                                     0)) {
                                   break;
                                 }
-
+ 
                                 // Reset or increment
-                                if (i == this.charities.length - 1) {
+                                if (i == widget.charities.length - 1) {
                                   i = 0;
                                 } else {
                                   i++;
                                 }
                               }
                             },
-                            charity: charities[index],
+                            charity: widget.charities[index],
                           );
                         }),
                   ),
@@ -269,16 +215,17 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
       ),
     );
   }
-
+ 
   String _doubleToString(double value) {
     return ((value * 100).round() / 100).toString();
   }
-
+ 
   double totalSum() {
     double sum = 0;
-    this.charities.forEach((element) {
+    widget.charities.forEach((element) {
       sum += element.donationValue;
     });
     return sum;
   }
 }
+ 

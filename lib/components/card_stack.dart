@@ -29,7 +29,7 @@ class _FundCardStackState extends State<FundCardStack> {
 
     API.getCharityStack().then((charities) {
       setState(() {
-        this._charities = charities;
+        this._charities = charities.length > 8 ? charities.sublist(0, 8) : charities;
       });
     });
   }

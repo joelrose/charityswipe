@@ -118,7 +118,7 @@ class _StackPageState extends State<StackPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          DonationOverviewPage()));
+                                          DonationOverviewPage(charities: this.selectedCharities)));
                             },
                             buttonText: selectedCharities.length.toString() +
                                 " charities selected",
