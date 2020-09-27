@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:src/components/card.dart';
 import 'package:src/components/tag.dart';
 import 'package:src/helpers/api.dart';

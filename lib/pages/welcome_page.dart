@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:src/charity_card.dart';
 import 'package:src/components/button.dart';
 import 'package:src/helpers/api.dart';
@@ -11,6 +12,8 @@ import 'package:src/page_wrapper.dart';
 import 'interests_page.dart';
 
 class WelcomePage extends StatelessWidget {
+  final LocalStorage storage = new LocalStorage("fund");
+
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
@@ -38,13 +41,13 @@ class WelcomePage extends StatelessWidget {
             Spacer(),
             CharitySwipeButton(
               onPressed: () {
-                API.createProfile().then((value) => {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => InterestsPage()),
-                      )
-                    });
+                API.createProfile().then((value) {
+                  this.storage.setItem("profile", value.id);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => InterestsPage()),
+                  );
+                });
               },
               buttonText: "Get Started",
             )

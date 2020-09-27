@@ -6,6 +6,7 @@ import 'package:src/charity_card.dart';
 import 'package:src/components/button.dart';
 import 'package:src/components/card.dart';
 import 'package:src/components/card_stack.dart';
+import 'package:src/components/charity_item.dart';
 import 'package:src/helpers/api.dart';
 import 'package:src/helpers/px_spacer.dart';
 import 'package:src/models/Charity.dart';
@@ -25,7 +26,7 @@ class _StackPageState extends State<StackPage> {
   Widget build(BuildContext context) {
     return PageWrapper(
         padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-        child: Container(
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,9 +38,21 @@ class _StackPageState extends State<StackPage> {
                   selectedCharities.add(charity);
                 });
               }),
-              Spacer(),
-              Container(
-                  alignment: Alignment.bottomCenter,
+              SizedBox(height: 40),
+              Text("Your favorite charities",
+                  style: Theme.of(context).textTheme.headline2),
+              SizedBox(height: 10),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              Positioned(
+                  bottom: 20,
                   child: CharitySwipeButton(
                       onPressed: () {},
                       buttonText: (this.selectedCharities.length.toString()) +

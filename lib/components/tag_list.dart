@@ -9,6 +9,9 @@ import 'package:src/models/Interest.dart';
 class CharitySwipeTagList extends StatefulWidget {
   @override
   _CharitySwipeTagListState createState() => _CharitySwipeTagListState();
+
+  CharitySwipeTagList({this.onSelectionChanged});
+  final void Function(List<Interest>) onSelectionChanged;
 }
 
 class _CharitySwipeTagListState extends State<CharitySwipeTagList> {
@@ -44,6 +47,9 @@ class _CharitySwipeTagListState extends State<CharitySwipeTagList> {
                       onPressed: () {
                         setState(() {
                           _selection[value.id] = !_selection[value.id];
+                          widget.onSelectionChanged(_interests
+                              .where((element) => _selection[element.id])
+                              .toList());
                         });
                       },
                       isSelected: _selection[value.id],

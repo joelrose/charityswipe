@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:localstorage/localstorage.dart';
 import 'package:src/models/Charity.dart';
 import 'package:src/models/Interest.dart';
 import 'package:http/http.dart' as http;
@@ -7,6 +8,7 @@ import 'package:src/models/Profile.dart';
 
 class API {
   static final endpoint = "http://charityswipe.eu-gb.mybluemix.net";
+  static final localStorage = LocalStorage("fund");
 
   static Future<List<Interest>> getInterests() async {
     return [
@@ -51,6 +53,20 @@ class API {
       return Profile.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to create profile.");
+    }
+  }
+
+  static Future<Profile> setInterests(
+      String profileId, List<Interest> interests) async {
+    String endpointUrl =
+        API.endpoint + "/profile/" + localStorage.getItem("profile");
+    final response = await http.put(endpointUrl,
+        body: json.encode(interests.map((e) => e.id)));
+
+    if (response.statusCode == 200) {
+      return Profile.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to update interests.");
     }
   }
 
