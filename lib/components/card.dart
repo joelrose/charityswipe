@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/helpers/px_spacer.dart';
 import 'package:src/models/Charity.dart';
 import 'package:src/style.dart';
@@ -77,14 +78,24 @@ class FundCard extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context).textTheme.bodyText1),
                               PxSpacer(10),
-                              Text("Tap to learn more",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1
-                                      .apply(
-                                          fontWeightDelta: 2,
-                                          fontSizeDelta: -1,
-                                          color: Style.grayDarker))
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                Text("Learn more",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1
+                                        .apply(
+                                            fontWeightDelta: 2,
+                                            fontSizeDelta: -1,
+                                            color: Style.grayDarker)),
+                                Padding(
+                                  padding: EdgeInsets.only(left:10),
+                                  child: SvgPicture.asset(
+                                      'assets/images/more.svg'),
+                                )
+                              ]),
                             ],
                           ))
                     ]))));
