@@ -129,6 +129,6 @@ class _StackPageState extends State<StackPage> {
               ),
             ),
           ),
-        ]));
+        ], clipBehavior: Clip.none));
   }
 }

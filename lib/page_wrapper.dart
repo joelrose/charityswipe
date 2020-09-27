@@ -12,6 +12,6 @@ class PageWrapper extends StatelessWidget {
     return Scaffold(
         body: Container(
             color: Style.grayLighter,
-            child: Padding(padding: this.padding, child: this.child)));
+            child: SafeArea(child: Padding(padding: this.padding, child: this.child))));
   }
 }

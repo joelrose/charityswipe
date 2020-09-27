@@ -44,7 +44,7 @@ class FundCard extends StatelessWidget {
                                 Rect.fromLTRB(0, 0, rect.width, rect.height));
                           },
                           blendMode: BlendMode.srcATop,
-                          child: Image.network(this.charity.imageUrl),
+                          child: AspectRatio(aspectRatio: 16/9, child: Image.network(this.charity.imageUrl, fit: BoxFit.cover)),
                         ),
                         Positioned(
                             bottom: 20,
