@@ -57,7 +57,9 @@ class API {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final List<Charity> charities = [];
-      for (var item in data) charities.add(Charity.fromJson(item));
+      for(int i = 0; i < 2; i++) { // TO DO: Remove
+        for (var item in data) charities.add(Charity.fromJson(item));
+      }
       return charities;
     } else {
       throw Exception("Failed to get match stack.");
