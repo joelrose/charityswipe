@@ -16,12 +16,15 @@ class FundCharityItem extends StatelessWidget {
       decoration: BoxDecoration(
           color: Style.grayLighter, borderRadius: BorderRadius.circular(5)),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(charity.name),
-            SvgPicture.asset("assets/images/chevron-right.svg")
+            Text(charity.name,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .apply(color: Style.black))
           ],
         ),
       ),

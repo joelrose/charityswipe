@@ -22,8 +22,8 @@ class Charity {
         id: json["id"],
         name: json["name"],
         description: json["description"],
-        label: json["label"],
-        imageUrl: json["imageUrl"],
+        label: json["label"] ?? "",
+        imageUrl: json["image"],
         relatedInterests: []);
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:src/pages/interests_page.dart';
+import 'package:src/pages/stack_page.dart';
 import 'package:src/style.dart';
 import 'package:src/theme.dart';
 import 'pages/welcome_page.dart';
@@ -11,10 +13,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  LocalStorage localStorage = LocalStorage("fund");
+
   @override
   Widget build(BuildContext context) {
-    var startPage = true ? WelcomePage() : InterestsPage();
+    final profileId = localStorage.getItem("profile");
+    var startPage = (profileId != null) ? StackPage() : WelcomePage();
 
     return MaterialApp(
       title: 'Flutter Demo',

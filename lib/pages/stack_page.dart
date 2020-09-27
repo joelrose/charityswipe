@@ -27,11 +27,16 @@ class _StackPageState extends State<StackPage> {
     return PageWrapper(
         padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
         child: SingleChildScrollView(
+          clipBehavior: Clip.none,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20),
               Text("Your Stack", style: Theme.of(context).textTheme.headline1),
+              SizedBox(height: 10),
+              Text(
+                  "Explore some of the charities we have picked. If you like one, swipe it right, else swipe it left. You can also use the search.",
+                  style: Theme.of(context).textTheme.bodyText1),
               SizedBox(height: 20),
               FundCardStack(onCharitySelected: (charity) {
                 setState(() {
@@ -42,21 +47,20 @@ class _StackPageState extends State<StackPage> {
               Text("Your favorite charities",
                   style: Theme.of(context).textTheme.headline2),
               SizedBox(height: 10),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
-              Positioned(
-                  bottom: 20,
-                  child: FundButton(
-                      onPressed: () {},
-                      buttonText: (this.selectedCharities.length.toString()) +
-                          " charities selected")),
+              FundCharityItem(charity: Charity(id: 1, name: "Red Cross")),
+              SizedBox(height: 10),
+              FundCharityItem(charity: Charity(id: 1, name: "Unicef")),
+              SizedBox(height: 10),
+              FundCharityItem(
+                  charity: Charity(id: 1, name: "World Health Organization")),
+              SizedBox(height: 10),
+              FundCharityItem(charity: Charity(id: 1, name: "WWF")),
+              SizedBox(height: 10),
+              FundCharityItem(charity: Charity(id: 1, name: "Share A Meal")),
+              SizedBox(height: 10),
+              FundCharityItem(
+                  charity: Charity(id: 1, name: "Doctors Without Borders")),
+              SizedBox(height: 10)
             ],
           ),
         ));

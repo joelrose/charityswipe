@@ -8,6 +8,6 @@ class Profile {
   List<Interest> interests = [];
 
   factory Profile.fromJson(Map<String, dynamic> json) {
-    return Profile(id: json["id"], name: json["name"] ?? "");
+    return Profile(id: json["uuid"], name: json["name"] ?? "");
   }
 }

@@ -42,7 +42,6 @@ class WelcomePage extends StatelessWidget {
             FundButton(
               onPressed: () {
                 API.createProfile().then((value) {
-                  this.storage.setItem("profile", value.id);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => InterestsPage()),

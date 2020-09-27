@@ -11,36 +11,13 @@ class API {
   static final localStorage = LocalStorage("fund");
 
   static Future<List<Interest>> getInterests() async {
-    return [
-      Interest(1, "Animals"),
-      Interest(2, "Clean Water"),
-      Interest(3, "Animals"),
-      Interest(4, "Wildfires"),
-      Interest(5, "Clean Water"),
-      Interest(6, "Clean Water"),
-      Interest(7, "Animals"),
-      Interest(8, "Wildfires"),
-      Interest(9, "Animals"),
-      Interest(10, "Food Shortages"),
-      Interest(11, "Flooding"),
-      Interest(12, "Wildfires"),
-      Interest(13, "Clean Water"),
-      Interest(14, "Flooding"),
-      Interest(15, "Clean Water"),
-      Interest(16, "Flooding"),
-      Interest(17, "Animals"),
-      Interest(18, "Wildfires"),
-      Interest(19, "Flooding"),
-      Interest(20, "Wildfires"),
-      Interest(21, "Flooding"),
-      Interest(22, "Wildfires"),
-      Interest(23, "Animals"),
-      Interest(24, "Wildfires"),
-    ];
-
     final response = await http.get(API.endpoint + "/interests");
 
     if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      List<Interest> interests = [];
+      for (var item in data) interests.add(Interest.fromJson(item));
+      return interests;
     } else {
       throw Exception("Failed to fetch interests.");
     }
@@ -50,7 +27,9 @@ class API {
     final response = await http.post(API.endpoint + "/profile");
 
     if (response.statusCode == 200) {
-      return Profile.fromJson(json.decode(response.body));
+      final profile = Profile.fromJson(json.decode(response.body));
+      await localStorage.setItem("profile", profile.id);
+      return profile;
     } else {
       throw Exception("Failed to create profile.");
     }
@@ -59,9 +38,9 @@ class API {
   static Future<Profile> setInterests(
       String profileId, List<Interest> interests) async {
     String endpointUrl =
-        API.endpoint + "/profile/" + localStorage.getItem("profile");
+        API.endpoint + "/profile/" + localStorage.getItem("profile").toString();
     final response = await http.put(endpointUrl,
-        body: json.encode(interests.map((e) => e.id)));
+        body: json.encode(interests.map((e) => e.id).toList()));
 
     if (response.statusCode == 200) {
       return Profile.fromJson(json.decode(response.body));
@@ -71,47 +50,17 @@ class API {
   }
 
   static Future<List<Charity>> getCharityStack() async {
-    return [
-      Charity(
-          id: 1,
-          name: "Save the tigers",
-          description:
-              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-          label: "WWF",
-          imageUrl:
-              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-      Charity(
-          id: 2,
-          name: "Save the tigers",
-          description:
-              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-          label: "WWF",
-          imageUrl:
-              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-      Charity(
-          id: 2,
-          name: "Save the tigers",
-          description:
-              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-          label: "WWF",
-          imageUrl:
-              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-      Charity(
-          id: 2,
-          name: "Save the tigers",
-          description:
-              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-          label: "WWF",
-          imageUrl:
-              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-      Charity(
-          id: 2,
-          name: "Save the tigers",
-          description:
-              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
-          label: "WWF",
-          imageUrl:
-              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
-    ];
+    String endpointUrl =
+        API.endpoint + "/profile/" + localStorage.getItem("profile") + "/match";
+    final response = await http.get(endpointUrl);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      final List<Charity> charities = [];
+      for (var item in data) charities.add(Charity.fromJson(item));
+      return charities;
+    } else {
+      throw Exception("Failed to get match stack.");
+    }
   }
 }
