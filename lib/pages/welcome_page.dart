@@ -28,18 +28,18 @@ class WelcomePage extends StatelessWidget {
               child: SvgPicture.asset('assets/images/welcome.svg'),
             ),
             Text(
-              "Welcome to CharitySwipe",
+              "Welcome to Fund",
               style: Theme.of(context).textTheme.headline1,
               textAlign: TextAlign.center,
             ),
             PxSpacer(20),
             Text(
-              "Donating money to charity can be challenging. With CharitySwipe, you can easily and securely discover, choose and donate money.",
+              "Donating money to charity can be challenging. With Fund, you can easily and securely discover, choose and donate money.",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText1,
             ),
             Spacer(),
-            CharitySwipeButton(
+            FundButton(
               onPressed: () {
                 API.createProfile().then((value) {
                   this.storage.setItem("profile", value.id);

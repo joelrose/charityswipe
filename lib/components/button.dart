@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:src/style.dart';
 
-class CharitySwipeButton extends StatelessWidget {
-  CharitySwipeButton({@required this.onPressed, @required this.buttonText});
+class FundButton extends StatelessWidget {
+  FundButton({@required this.onPressed, @required this.buttonText});
 
   final String buttonText;
   final GestureTapCallback onPressed;

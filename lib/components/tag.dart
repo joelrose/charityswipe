@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:src/style.dart';
 
-class CharitySwipeTag extends StatelessWidget {
-  CharitySwipeTag(
+class FundTag extends StatelessWidget {
+  FundTag(
       {@required this.text, @required this.onPressed, this.isSelected = false});
 
   final GestureTapCallback onPressed;

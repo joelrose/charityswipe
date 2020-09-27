@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:src/models/Charity.dart';
 import 'package:src/style.dart';
 
-class CharitySwipeCharityItem extends StatelessWidget {
-  CharitySwipeCharityItem({@required this.charity, this.onPressed});
+class FundCharityItem extends StatelessWidget {
+  FundCharityItem({@required this.charity, this.onPressed});
 
   final Charity charity;
   final GestureTapCallback onPressed;

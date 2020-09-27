@@ -28,15 +28,15 @@ class FinalDonationPage extends StatelessWidget {
             new Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: new Text(
-                "Donating money to charity can be challenging. With CharitySwipe, you can easily and securely discover, choose and donate money.",
+                "Donating money to charity can be challenging. With Fund, you can easily and securely discover, choose and donate money.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
             Spacer(),
-            new CharitySwipeButton(
+            new FundButton(
               onPressed: () {
-                Share.share('Check out CharitySwipe at charityswipe.com!',
+                Share.share('Check out Fund at charityswipe.com!',
                     subject: 'Look what I made!');
               },
               buttonText: "Tell your Friends",

@@ -41,18 +41,18 @@ class _InterestsPageState extends State<InterestsPage> {
                   style: Theme.of(context).textTheme.headline1),
               PxSpacer(20),
               Text(
-                "Donating money to charity can be challenging. With CharitySwipe, you can easily and securely discover, choose and donate money.",
+                "Donating money to charity can be challenging. With Fund, you can easily and securely discover, choose and donate money.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               PxSpacer(20),
-              CharitySwipeTagList(onSelectionChanged: (value) {
+              FundTagList(onSelectionChanged: (value) {
                 setState(() {
                   this._interestSelection = value;
                 });
               }),
               Spacer(),
-              CharitySwipeButton(
+              FundButton(
                 buttonText: "Complete",
                 onPressed: () {
                   final profileId = storage.getItem("profile");

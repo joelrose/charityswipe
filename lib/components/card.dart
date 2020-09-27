@@ -3,8 +3,8 @@ import 'package:src/helpers/px_spacer.dart';
 import 'package:src/models/Charity.dart';
 import 'package:src/style.dart';
 
-class CharitySwipeCard extends StatelessWidget {
-  CharitySwipeCard({this.charity, this.disabled = false});
+class FundCard extends StatelessWidget {
+  FundCard({this.charity, this.disabled = false});
 
   final Charity charity;
   bool disabled;

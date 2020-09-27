@@ -33,7 +33,7 @@ class _StackPageState extends State<StackPage> {
               SizedBox(height: 20),
               Text("Your Stack", style: Theme.of(context).textTheme.headline1),
               SizedBox(height: 20),
-              CharitySwipeCardStack(onCharitySelected: (charity) {
+              FundCardStack(onCharitySelected: (charity) {
                 setState(() {
                   selectedCharities.add(charity);
                 });
@@ -42,18 +42,18 @@ class _StackPageState extends State<StackPage> {
               Text("Your favorite charities",
                   style: Theme.of(context).textTheme.headline2),
               SizedBox(height: 10),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
-              CharitySwipeCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
+              FundCharityItem(charity: Charity(id: 1, name: "Toast")),
               Positioned(
                   bottom: 20,
-                  child: CharitySwipeButton(
+                  child: FundButton(
                       onPressed: () {},
                       buttonText: (this.selectedCharities.length.toString()) +
                           " charities selected")),

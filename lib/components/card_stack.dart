@@ -9,16 +9,16 @@ import 'package:src/models/Interest.dart';
 
 // Choice Chips
 
-class CharitySwipeCardStack extends StatefulWidget {
-  CharitySwipeCardStack({this.onCharitySelected});
+class FundCardStack extends StatefulWidget {
+  FundCardStack({this.onCharitySelected});
 
   final void Function(Charity) onCharitySelected;
 
   @override
-  _CharitySwipeCardStackState createState() => _CharitySwipeCardStackState();
+  _FundCardStackState createState() => _FundCardStackState();
 }
 
-class _CharitySwipeCardStackState extends State<CharitySwipeCardStack> {
+class _FundCardStackState extends State<FundCardStack> {
   List<Charity> _charities = [];
   double _rotationDegree = 0;
   Offset totalOffset = Offset(0, 0);
@@ -56,14 +56,12 @@ class _CharitySwipeCardStackState extends State<CharitySwipeCardStack> {
                         offset: Offset(totalOffset.dx / horizontalDampening,
                             totalOffset.dy / verticalDampening),
                         child: Transform(
-                            child:
-                                CharitySwipeCard(charity: this._charities[i]),
+                            child: FundCard(charity: this._charities[i]),
                             alignment:
                                 FractionalOffset.center, // set transform origin
                             transform:
                                 new Matrix4.rotationZ(this._rotationDegree)))
-                    : CharitySwipeCard(
-                        charity: this._charities[i], disabled: true)
+                    : FundCard(charity: this._charities[i], disabled: true)
             ]), // rotate -10 deg
             onPanDown: (details) => {totalOffset = Offset(0, 0)},
             onPanCancel: () => {
