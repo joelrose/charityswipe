@@ -72,6 +72,8 @@ class FundCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(charity.description,
+                                  maxLines: 5,
+                                  overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context).textTheme.bodyText1),
                               PxSpacer(10),
                               Text("Tap to learn more",
