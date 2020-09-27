@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/avd.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/components/button.dart';
+import 'package:src/components/tag_list.dart';
 import 'package:src/helpers/px_spacer.dart';
 import 'package:src/onboarding_wrapper.dart';
 import 'package:src/page_wrapper.dart';
@@ -38,6 +39,8 @@ class _InterestsPageState extends State<InterestsPage> {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText1,
           ),
+          PxSpacer(20),
+          CharitySwipeTagList(),
           Spacer(),
           CharitySwipeButton(
             buttonText: "Complete",
