@@ -45,7 +45,7 @@ class _InterestsPageState extends State<InterestsPage> {
               CharitySwipeButton(
                 buttonText: "Complete",
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => StackPage()));
                 },
               )
