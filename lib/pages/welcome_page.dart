@@ -39,7 +39,7 @@ class WelcomePage extends StatelessWidget {
             CharitySwipeButton(
               onPressed: () {
                 API.createProfile().then((value) => {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => InterestsPage()),

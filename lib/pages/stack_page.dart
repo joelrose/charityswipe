@@ -8,24 +8,44 @@ import 'package:src/components/card.dart';
 import 'package:src/components/card_stack.dart';
 import 'package:src/helpers/api.dart';
 import 'package:src/helpers/px_spacer.dart';
+import 'package:src/models/Charity.dart';
 import 'package:src/page_wrapper.dart';
 
 import 'interests_page.dart';
 
-class StackPage extends StatelessWidget {
+class StackPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _StackPageState();
+}
+
+class _StackPageState extends State<StackPage> {
+  List<Charity> selectedCharities = [];
+
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
-        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text("Your Stack", style: Theme.of(context).textTheme.headline1),
-            PxSpacer(10),
-            CharitySwipeCardStack(),
-            Spacer(),
-          ],
-        ));
+      padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          PxSpacer(20),
+          Text("Your Stack", style: Theme.of(context).textTheme.headline1),
+          PxSpacer(20),
+          CharitySwipeCardStack(onCharitySelected: (charity) {
+            setState(() {
+              selectedCharities.add(charity);
+            });
+          }),
+          Spacer(),
+          Container(
+              alignment: Alignment.bottomCenter,
+              child: CharitySwipeButton(
+                  onPressed: () {},
+                  buttonText: (this.selectedCharities.length.toString()) +
+                      " charities selected")),
+        ],
+      ),
+    );
   }
 }
