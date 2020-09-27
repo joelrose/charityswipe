@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/components/button.dart';
-import 'package:src/onboarding_wrapper.dart';
 import 'package:src/page_wrapper.dart';
 import 'package:share/share.dart';
 
@@ -11,8 +10,8 @@ class FinalDonationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
-        child: OnboardingWrapper(
-      body: Center(
+      padding: EdgeInsets.fromLTRB(30, 40, 30, 40),
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,13 +36,14 @@ class FinalDonationPage extends StatelessWidget {
             Spacer(),
             new CharitySwipeButton(
               onPressed: () {
-                Share.share('Check out CharitySwipe at charityswipe.com!', subject: 'Look what I made!');
+                Share.share('Check out CharitySwipe at charityswipe.com!',
+                    subject: 'Look what I made!');
               },
               buttonText: "Tell your Friends",
             )
           ],
         ),
       ),
-    ));
+    );
   }
 }

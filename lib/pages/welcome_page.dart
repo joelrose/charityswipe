@@ -6,7 +6,6 @@ import 'package:src/charity_card.dart';
 import 'package:src/components/button.dart';
 import 'package:src/helpers/api.dart';
 import 'package:src/helpers/px_spacer.dart';
-import 'package:src/onboarding_wrapper.dart';
 import 'package:src/page_wrapper.dart';
 
 import 'interests_page.dart';
@@ -15,8 +14,8 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
-        child: OnboardingWrapper(
-      body: Center(
+      padding: EdgeInsets.fromLTRB(30, 40, 30, 40),
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,6 +51,6 @@ class WelcomePage extends StatelessWidget {
           ],
         ),
       ),
-    ));
+    );
   }
 }

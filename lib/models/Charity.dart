@@ -6,12 +6,14 @@ class Charity {
       {@required this.id,
       @required this.name,
       this.description,
+      this.label,
       this.imageUrl,
       this.relatedInterests});
 
   final int id;
   final String name;
   String description = "";
+  String label = "";
   String imageUrl = "";
   List<Interest> relatedInterests = [];
 
@@ -20,6 +22,7 @@ class Charity {
         id: json["id"],
         name: json["name"],
         description: json["description"],
+        label: json["label"],
         imageUrl: json["imageUrl"],
         relatedInterests: []);
   }
