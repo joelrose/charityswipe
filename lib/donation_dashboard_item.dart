@@ -39,7 +39,7 @@ class _DonationDashboardItemState extends State<DonationDashboardItem> {
                 children: [
                   Text(widget.charity.label),
                   Text(widget.charity.name,
-                      style: Theme.of(context).textTheme.headline2)
+                      style: Theme.of(context).textTheme.bodyText1)
                 ],
               ),
               CustomTextField(

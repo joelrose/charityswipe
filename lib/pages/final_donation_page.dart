@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/components/button.dart';
 import 'package:src/page_wrapper.dart';
 import 'package:share/share.dart';
+import 'package:src/pages/stack_page.dart';
 
 class FinalDonationPage extends StatelessWidget {
   @override
@@ -40,6 +41,13 @@ class FinalDonationPage extends StatelessWidget {
                     subject: 'Look what I made!');
               },
               buttonText: "Tell your Friends",
+            ),
+            SizedBox(height: 20),
+            new FundButton(
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StackPage()));
+              },
+              buttonText: "Close",
             )
           ],
         ),

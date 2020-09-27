@@ -7,6 +7,7 @@ import 'package:src/custom_textfield.dart';
 import 'package:src/donation_dashboard_item.dart';
 import 'package:src/models/Charity.dart';
 import 'package:src/page_wrapper.dart';
+import 'package:src/pages/final_donation_page.dart';
 import 'package:src/style.dart';
  
 class DonationOverviewPage extends StatefulWidget {
@@ -198,7 +199,9 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 10),
                     child: FundButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FinalDonationPage()));
+                      },
                       buttonText: "Donate",
                     ),
                   ),
