@@ -7,15 +7,15 @@ import 'package:src/style.dart';
 typedef StringToVoidFunc = void Function(String);
 
 class DonationDashboardItem extends StatefulWidget {
-  final StringToVoidFunc onChange;
+  final void Function(double) onChange;
   final Charity charity;
-  int donationValue;
+  double totalDonationValue;
 
   DonationDashboardItem(
       {Key key,
       @required this.onChange,
       @required this.charity,
-      @required this.donationValue})
+      @required this.totalDonationValue})
       : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class DonationDashboardItem extends StatefulWidget {
 }
 
 class _DonationDashboardItemState extends State<DonationDashboardItem> {
-  double _currentSliderValue = 10;
+  double changeStartValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -49,27 +49,43 @@ class _DonationDashboardItemState extends State<DonationDashboardItem> {
                         })
                       },
                   hintText: '',
-                  value: _currentSliderValue.round().toString(),
+                  value: this._doubleToString(widget.charity.donationValue),
                   disabled: true),
             ],
           ),
         ),
         Slider(
-          value: (_currentSliderValue > widget.donationValue.toDouble()) ? 
-            widget.donationValue.toDouble() // TO DO
-           : _currentSliderValue,
+          value:
+              widget.charity.donationValue.clamp(0, widget.totalDonationValue),
           min: 0,
-          max: widget.donationValue.toDouble(),
-          divisions: widget.donationValue,
-          label: 'Amount' + _currentSliderValue.round().toString(),
+          max: widget.totalDonationValue,
+          divisions: (widget.totalDonationValue * 100).round(),
+          label: 'Amount' +
+              (widget.charity.donationValue * 100).round().toString(),
+          onChangeStart: (value) => {
+            setState(() {
+              changeStartValue = value;
+            })
+          },
           onChanged: (double value) {
             setState(() {
-              _currentSliderValue = value;
+              widget.charity.donationValue = value;
+            });
+          },
+          onChangeEnd: (double value) {
+            setState(() {
+              double delta = value - changeStartValue;
+              widget.onChange(delta);
+              widget.charity.donationValue = value;
             });
           },
           activeColor: Style.greenLight,
         )
       ],
     );
+  }
+
+  String _doubleToString(double value) {
+    return ((value * 100).round() / 100).toString();
   }
 }
