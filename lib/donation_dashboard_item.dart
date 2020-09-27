@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:src/custom_textfield.dart';
+import 'package:src/donation_singleton.dart';
 import 'package:src/style.dart';
 
 typedef StringToVoidFunc = void Function(String);
@@ -10,16 +11,21 @@ class DonationDashboardItem extends StatefulWidget {
   final String title;
   final String organisation;
 
-  double _currentSliderValue = 10;
-  double _value = 20;
-
-  DonationDashboardItem({Key key, @required this.onChange, @required this.title,@required this.organisation}) : super(key: key);
+  DonationDashboardItem(
+      {Key key,
+      @required this.onChange,
+      @required this.title,
+      @required this.organisation})
+      : super(key: key);
 
   @override
   _DonationDashboardItemState createState() => _DonationDashboardItemState();
 }
 
 class _DonationDashboardItemState extends State<DonationDashboardItem> {
+  double _currentSliderValue = 10;
+  double _value = 20;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,20 +43,28 @@ class _DonationDashboardItemState extends State<DonationDashboardItem> {
                       style: Theme.of(context).textTheme.headline2)
                 ],
               ),
-              CustomTextField(onChange: (value) => { }, hintText: '', value: widget._value.toString()),
+              CustomTextField(
+                  onChange: (value) => {
+                        setState(() {
+                          //_value = double.parse(value);
+                        })
+                      },
+                  hintText: '',
+                  value: _value.round().toString(),
+                  disabled: true),
             ],
           ),
         ),
         Slider(
-          value: widget._currentSliderValue,
-          min: 1,
-          max: 100,
-          divisions: widget._currentSliderValue.round(),
-          label: 'Amount' + widget._currentSliderValue.round().toString(),
+          value: _currentSliderValue,
+          min: 0,
+          max: DonationSingleton.singleton().donationAmount.toDouble(),
+          divisions: DonationSingleton.singleton().donationAmount,
+          label: 'Amount' + _currentSliderValue.round().toString(),
           onChanged: (double value) {
             setState(() {
-              widget._currentSliderValue = value;
-              widget._value = value;
+              _currentSliderValue = value;
+              _value = value;
             });
           },
           activeColor: Style.greenLight,

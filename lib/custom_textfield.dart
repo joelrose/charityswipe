@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 typedef StringToVoidFunc = void Function(String);
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({@required this.onChange, @required this.hintText, @required this.value});
+  CustomTextField({@required this.onChange, @required this.hintText, @required this.value, this.disabled});
   final StringToVoidFunc onChange;
   final String hintText;
+  final bool disabled;
   String value;
 
   @override
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.bodyText2,
         onChanged: onChange,
+        enabled: !((this.disabled) ?? false),
       ),
     );
   }
