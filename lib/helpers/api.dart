@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:src/models/Interest.dart';
 import 'package:http/http.dart' as http;
+import 'package:src/models/Profile.dart';
 
 class API {
   static final endpoint = "http://charityswipe.eu-gb.mybluemix.net";
@@ -37,6 +40,16 @@ class API {
     if (response.statusCode == 200) {
     } else {
       throw Exception("Failed to fetch interests.");
+    }
+  }
+
+  static Future<Profile> createProfile() async {
+    final response = await http.post(API.endpoint + "/profile");
+
+    if (response.statusCode == 200) {
+      return Profile.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to create profile.");
     }
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/charity_card.dart';
 import 'package:src/components/button.dart';
+import 'package:src/helpers/api.dart';
 import 'package:src/helpers/px_spacer.dart';
 import 'package:src/onboarding_wrapper.dart';
 import 'package:src/page_wrapper.dart';
@@ -38,10 +39,13 @@ class WelcomePage extends StatelessWidget {
             Spacer(),
             CharitySwipeButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InterestsPage()),
-                );
+                API.createProfile().then((value) => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => InterestsPage()),
+                      )
+                    });
               },
               buttonText: "Get Started",
             )
