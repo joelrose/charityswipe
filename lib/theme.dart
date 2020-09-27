@@ -15,11 +15,25 @@ final theme = ThemeData(
             fontSize: Style.fontTitle,
             fontWeight: FontWeight.bold,
             color: Colors.black)),
+
+    headline2: GoogleFonts.inter(
+        textStyle: TextStyle(
+            fontSize: Style.fontLarge,
+            fontWeight: FontWeight.bold,
+            color: Colors.black)),
+
     bodyText1: GoogleFonts.inter(
         textStyle: TextStyle(
             height: 1.4,
             color: Style.grayDark,
             fontSize: Style.fontNormal,
             fontWeight: FontWeight.normal)),
+
+    bodyText2: GoogleFonts.inter(
+        textStyle: TextStyle(
+            height: 1.4,
+            color: Style.greenLight,
+            fontSize: Style.fontLarge,
+            fontWeight: FontWeight.w500)),
   ),
 );
