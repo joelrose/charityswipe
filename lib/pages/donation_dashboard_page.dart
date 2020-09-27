@@ -1,10 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:src/components/button.dart';
 import 'package:src/custom_textfield.dart';
 import 'package:src/donation_dashboard_item.dart';
 import 'package:src/page_wrapper.dart';
@@ -18,11 +15,10 @@ class DonationOverviewPage extends StatefulWidget {
 }
 
 class _DonationOverviewPageState extends State<DonationOverviewPage> {
-  double _currentSliderValue = 20;
-
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
+      padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,7 +40,7 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                     children: [
                       Text("Donation Amount:",
                           style: Theme.of(context).textTheme.bodyText1),
-                      CustomTextField(onChange: (value) => {}, hintText: '20'),
+                      CustomTextField(onChange: (value) => {}, hintText: '20', value: ''),
                     ],
                   ),
                 ),
@@ -64,29 +60,9 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
             ),
           ),
           DonationDashboardItem(onChange: (value) => {}, organisation: "WWF", title: "Save the fucking whales"),
+          DonationDashboardItem(onChange: (value) => {}, organisation: "WWF", title: "Save the fucking whales"),
         ],
       ),
     );
-    /*return PageWrapper(
-      child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text("Finalize Donation",
-                  style: Theme.of(context).textTheme.headline1),
-              TextField(
-                decoration: InputDecoration(labelText: "Dontation amount:"),
-                keyboardType: TextInputType.number,
-              ),
-              Text("Modify your dontation:",
-                  style: Theme.of(context).textTheme.headline1),
-              ListView(children: <Widget>[
-                ListTile(
-                  leading: Icon(Icons.map),
-                  title: Text('Map'),
-                ),
-              ]),
-            ]),
-    );*/
   }
 }
