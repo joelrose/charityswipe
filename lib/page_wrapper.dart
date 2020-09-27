@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/style.dart';
 
 class PageWrapper extends StatelessWidget {
   Widget child;
@@ -9,7 +10,8 @@ class PageWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-            SafeArea(child: Padding(padding: this.padding, child: this.child)));
+        body: Container(
+            color: Style.grayLighter,
+            child: Padding(padding: this.padding, child: this.child)));
   }
 }

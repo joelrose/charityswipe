@@ -17,11 +17,18 @@ class DonationOverviewPage extends StatefulWidget {
 }
 
 class _DonationOverviewPageState extends State<DonationOverviewPage> {
-  int donationAmount = 5;
+  double donationAmount = 5.0;
 
   final ScrollController _scrollController = ScrollController();
 
-  final List<Charity> charities = [
+  _DonationOverviewPageState() {
+    this.charities = this.charities.map((e) {
+      e.donationValue = donationAmount / this.charities.length;
+      return e;
+    }).toList();
+  }
+
+  List<Charity> charities = [
     Charity(
         id: 1,
         name: "Save the tigers",
@@ -116,8 +123,22 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                           Text("Donation Amount:",
                               style: Theme.of(context).textTheme.subtitle1),
                           CustomTextField(
-                              onChange: (value) =>
-                                  {donationAmount = int.parse(value)},
+                              onChange: (value) {
+                                double newDonationAmount =
+                                    double.tryParse(value);
+                                if (newDonationAmount == null) {
+                                  newDonationAmount = 0;
+                                }
+
+                                setState(() {
+                                  donationAmount = newDonationAmount;
+                                  charities = charities.map((e) {
+                                    e.donationValue = newDonationAmount /
+                                        (charities.length + .0);
+                                    return e;
+                                  }).toList();
+                                });
+                              },
                               hintText: '20',
                               value: ''),
                         ],
@@ -149,9 +170,68 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                         controller: _scrollController,
                         itemBuilder: (BuildContext ctxt, int index) {
                           return DonationDashboardItem(
-                              onChange: (value) => {},
-                              charity: charities[index],
-                              donationValue: donationAmount);
+                            totalDonationValue: this.donationAmount,
+                            onChange: (delta) {
+                              var donationDelta =
+                                  (delta / (this.charities.length - 1));
+
+                              var i = 0;
+                              while ((this.totalSum() - this.donationAmount)
+                                      .abs() >
+                                  0.2) {
+                                if (i != index) {
+                                  var newValue =
+                                      this.charities[i].donationValue -
+                                          donationDelta;
+
+                                  if (newValue >= 0 &&
+                                      newValue <= donationAmount) {
+                                    setState(() {
+                                      this.charities[i].donationValue =
+                                          newValue;
+                                    });
+                                    donationDelta =
+                                        (delta / (this.charities.length - 1));
+                                  } else if (newValue < 0) {
+                                    setState(() {
+                                      this.charities[i].donationValue = 0;
+                                    });
+                                    donationDelta += (newValue.abs() /
+                                        (this.charities.length - 1));
+                                  } else {
+                                    setState(() {
+                                      this.charities[i].donationValue =
+                                          donationAmount;
+                                    });
+                                    donationDelta -=
+                                        ((newValue - this.donationAmount)
+                                                .abs() /
+                                            (this.charities.length - 1));
+                                  }
+                                }
+
+                                if (!this.charities.any((element) =>
+                                    element.donationValue + donationDelta <
+                                    donationAmount)) {
+                                  break;
+                                }
+
+                                if (!this.charities.any((element) =>
+                                    element.donationValue + donationDelta >
+                                    0)) {
+                                  break;
+                                }
+
+                                // Reset or increment
+                                if (i == this.charities.length - 1) {
+                                  i = 0;
+                                } else {
+                                  i++;
+                                }
+                              }
+                            },
+                            charity: charities[index],
+                          );
                         }),
                   ),
                 ),
@@ -171,7 +251,7 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(bottom: 10),
-                    child: CharitySwipeButton(
+                    child: FundButton(
                       onPressed: () {},
                       buttonText: "Donate",
                     ),
@@ -188,5 +268,17 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
         ],
       ),
     );
+  }
+
+  String _doubleToString(double value) {
+    return ((value * 100).round() / 100).toString();
+  }
+
+  double totalSum() {
+    double sum = 0;
+    this.charities.forEach((element) {
+      sum += element.donationValue;
+    });
+    return sum;
   }
 }

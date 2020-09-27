@@ -8,7 +8,8 @@ class Charity {
       this.description,
       this.label,
       this.imageUrl,
-      this.relatedInterests});
+      this.relatedInterests,
+      this.donationValue});
 
   final int id;
   final String name;
@@ -16,6 +17,7 @@ class Charity {
   String label = "";
   String imageUrl = "";
   List<Interest> relatedInterests = [];
+  double donationValue = 0;
 
   factory Charity.fromJson(Map<String, dynamic> json) {
     return Charity(
