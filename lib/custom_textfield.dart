@@ -14,14 +14,14 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 10),
-      width: 50,
+      width: 70,
       child: TextField(
         decoration: InputDecoration(
           border: new OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             gapPadding: 2.0,
           ),
-          hintText: this.value,
+          hintText: this.value + '',
           contentPadding: EdgeInsets.all(2.0),
         ),
         keyboardType: TextInputType.number,

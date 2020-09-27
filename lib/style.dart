@@ -14,6 +14,7 @@ class Style {
   static Color grayLighter = Color(0xFFF2F2F2);
 
   // Font sizes
+  static double fontExtraSmall = 12.0;
   static double fontSmall = 14.0;
   static double fontNormal = 15.0;
   static double fontLarge = 20.0;
