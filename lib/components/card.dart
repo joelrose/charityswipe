@@ -59,6 +59,7 @@ class FundCard extends StatelessWidget {
                                               fontWeightDelta: 2)),
                                   SizedBox(height: 5),
                                   Text(charity.name,
+                                      overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline1
