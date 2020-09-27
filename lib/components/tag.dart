@@ -19,6 +19,7 @@ class CharitySwipeTag extends StatelessWidget {
     return GestureDetector(
         onTap: this.onPressed,
         child: Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 12, 12),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(500),
                 border: Border.all(color: borderColor),
