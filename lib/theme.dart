@@ -35,5 +35,19 @@ final theme = ThemeData(
             color: Style.greenLight,
             fontSize: Style.fontLarge,
             fontWeight: FontWeight.w500)),
+
+    subtitle1: GoogleFonts.inter(
+        textStyle: TextStyle(
+            height: 1.4,
+            color: Style.grayDarker,
+            fontSize: Style.fontLarge,
+            fontWeight: FontWeight.w400)),
+
+    subtitle2: GoogleFonts.inter(
+        textStyle: TextStyle(
+            height: 1.4,
+            color: Style.grayMedium,
+            fontSize: Style.fontExtraSmall,
+            fontWeight: FontWeight.w300)),
   ),
 );
