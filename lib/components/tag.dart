@@ -26,6 +26,8 @@ class CharitySwipeTag extends StatelessWidget {
                 color: backgroundColor),
             child: Padding(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                child: Text(this.text, style: TextStyle(color: textColor)))));
+                child: Text(this.text,
+                    style: TextStyle(
+                        color: textColor, fontSize: Style.fontNormal)))));
   }
 }

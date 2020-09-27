@@ -72,6 +72,30 @@ class API {
           label: "WWF",
           imageUrl:
               "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
+      Charity(
+          id: 2,
+          name: "Save the tigers",
+          description:
+              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
+          label: "WWF",
+          imageUrl:
+              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
+      Charity(
+          id: 2,
+          name: "Save the tigers",
+          description:
+              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
+          label: "WWF",
+          imageUrl:
+              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
+      Charity(
+          id: 2,
+          name: "Save the tigers",
+          description:
+              "“Save tigers now” is a global campaign by World Wildlife Fund and Leonardo DiCaprio to build political, financial and public support to double the number of wild tigers by 2022, the next year of the tiger.",
+          label: "WWF",
+          imageUrl:
+              "https://static.scientificamerican.com/sciam/cache/file/5C51E427-1715-44E6-9B14D9487D7B7F2D_source.jpg"),
     ];
   }
 }

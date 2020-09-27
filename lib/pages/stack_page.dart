@@ -24,28 +24,28 @@ class _StackPageState extends State<StackPage> {
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
-      padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          PxSpacer(20),
-          Text("Your Stack", style: Theme.of(context).textTheme.headline1),
-          PxSpacer(20),
-          CharitySwipeCardStack(onCharitySelected: (charity) {
-            setState(() {
-              selectedCharities.add(charity);
-            });
-          }),
-          Spacer(),
-          Container(
-              alignment: Alignment.bottomCenter,
-              child: CharitySwipeButton(
-                  onPressed: () {},
-                  buttonText: (this.selectedCharities.length.toString()) +
-                      " charities selected")),
-        ],
-      ),
-    );
+        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text("Your Stack", style: Theme.of(context).textTheme.headline1),
+              SizedBox(height: 20),
+              CharitySwipeCardStack(onCharitySelected: (charity) {
+                setState(() {
+                  selectedCharities.add(charity);
+                });
+              }),
+              Spacer(),
+              Container(
+                  alignment: Alignment.bottomCenter,
+                  child: CharitySwipeButton(
+                      onPressed: () {},
+                      buttonText: (this.selectedCharities.length.toString()) +
+                          " charities selected")),
+            ],
+          ),
+        ));
   }
 }
