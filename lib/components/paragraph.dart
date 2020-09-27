@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CharitySwipeText extends StatelessWidget {
-  CharitySwipeText({this.text});
+class FundText extends StatelessWidget {
+  FundText({this.text});
 
   final String text;
 

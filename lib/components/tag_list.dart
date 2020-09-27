@@ -6,12 +6,15 @@ import 'package:src/models/Interest.dart';
 
 // Choice Chips
 
-class CharitySwipeTagList extends StatefulWidget {
+class FundTagList extends StatefulWidget {
   @override
-  _CharitySwipeTagListState createState() => _CharitySwipeTagListState();
+  _FundTagListState createState() => _FundTagListState();
+
+  FundTagList({this.onSelectionChanged});
+  final void Function(List<Interest>) onSelectionChanged;
 }
 
-class _CharitySwipeTagListState extends State<CharitySwipeTagList> {
+class _FundTagListState extends State<FundTagList> {
   List<Interest> _interests = [];
   Map<int, bool> _selection = {};
 
@@ -40,10 +43,13 @@ class _CharitySwipeTagListState extends State<CharitySwipeTagList> {
             for (var partition in partitions)
               Row(children: [
                 for (var value in partition)
-                  CharitySwipeTag(
+                  FundTag(
                       onPressed: () {
                         setState(() {
                           _selection[value.id] = !_selection[value.id];
+                          widget.onSelectionChanged(_interests
+                              .where((element) => _selection[element.id])
+                              .toList());
                         });
                       },
                       isSelected: _selection[value.id],

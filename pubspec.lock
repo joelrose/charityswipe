@@ -102,13 +102,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_tindercard:
-    dependency: "direct main"
-    description:
-      name: flutter_tindercard
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.9"
   google_fonts:
     dependency: "direct main"
     description:
@@ -137,6 +130,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
+  localstorage:
+    dependency: "direct main"
+    description:
+      name: localstorage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2+5"
   matcher:
     dependency: transitive
     description:
