@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:src/helpers/px_spacer.dart';
 import 'package:src/models/Charity.dart';
+import 'package:src/pages/stack_detail_page.dart';
 import 'package:src/style.dart';
 
 class FundCard extends StatelessWidget {
@@ -67,37 +68,48 @@ class FundCard extends StatelessWidget {
                                           .apply(color: Style.white))
                                 ]))
                       ]),
-                      Container(
-                          color: Style.grayLighter,
-                          padding: EdgeInsets.all(20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(charity.description,
-                                  maxLines: 5,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.bodyText1),
-                              PxSpacer(10),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        StackDetailPage(charity: charity)));
+                          },
+                          child: Container(
+                              color: Style.grayLighter,
+                              padding: EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                Text("Learn more",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1
-                                        .apply(
-                                            fontWeightDelta: 2,
-                                            fontSizeDelta: -1,
-                                            color: Style.grayDarker)),
-                                Padding(
-                                  padding: EdgeInsets.only(left:10),
-                                  child: SvgPicture.asset(
-                                      'assets/images/more.svg'),
-                                )
-                              ]),
-                            ],
-                          ))
+                                  Text(charity.description,
+                                      maxLines: 5,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
+                                  PxSpacer(10),
+                                  Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text("Learn more",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText1
+                                                .apply(
+                                                    fontWeightDelta: 2,
+                                                    fontSizeDelta: -1,
+                                                    color: Style.grayDarker)),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: SvgPicture.asset(
+                                              'assets/images/more.svg'),
+                                        )
+                                      ]),
+                                ],
+                              )))
                     ]))));
   }
 }

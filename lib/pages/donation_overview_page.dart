@@ -171,7 +171,7 @@ class _DonationOverviewPageState extends State<DonationOverviewPage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(bottom: 10),
-                    child: CharitySwipeButton(
+                    child: FundButton(
                       onPressed: () {},
                       buttonText: "Donate",
                     ),

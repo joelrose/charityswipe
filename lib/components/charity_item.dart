@@ -24,7 +24,15 @@ class FundCharityItem extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
-                    .apply(color: Style.black))
+                    .apply(color: Style.black)),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 10),
+                  child: SvgPicture.asset('assets/images/star.svg')),
+                SvgPicture.asset('assets/images/more.svg'),
+              ],
+            )
           ],
         ),
       ),

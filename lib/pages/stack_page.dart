@@ -54,9 +54,7 @@ class _StackPageState extends State<StackPage> {
                         )),
                   ],
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                   Text("Your Stack",
                       style: Theme.of(context).textTheme.headline1),
                   Padding(
@@ -81,8 +79,8 @@ class _StackPageState extends State<StackPage> {
                   });
                 }),
                 SizedBox(height: 40),
-                Text("Your favorite charities",
-                    style: Theme.of(context).textTheme.headline2),
+                Text("Favorites",
+                    style: Theme.of(context).textTheme.headline3),
                 SizedBox(height: 10),
                 FundCharityItem(charity: Charity(id: 1, name: "Red Cross")),
                 SizedBox(height: 10),
@@ -104,7 +102,6 @@ class _StackPageState extends State<StackPage> {
           Positioned(
             bottom: 0,
             width: MediaQuery.of(context).size.width,
-            
             child: Container(
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
